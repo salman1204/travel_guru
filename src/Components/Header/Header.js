@@ -14,7 +14,7 @@ const Header = () => {
         <Nav.Item as="li">
           <Nav.Link eventKey="link-2">Link</Nav.Link>
         </Nav.Item>
-        <Button variant="warning">Logout</Button>
+        <Button variant="warning">Login</Button>
       </Nav>
     </div>
   );
