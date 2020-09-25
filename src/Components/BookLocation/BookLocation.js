@@ -7,42 +7,41 @@ import BookingForm from "../BookingForm/BookingForm";
 import LocationDetails from "../LocationDetails/LocationDetails";
 
 const BookLocation = () => {
-	const { locationId } = useParams();
-	const [location, setLocation] = useState({});
-	const history = useHistory();
-	const [
-		loggedInUser, 
-		setLoggedInUser, 
-		bookingDetails, 
-		setBookingDetails,
-	] = useContext(UserContext);
+  const { locationId } = useParams();
+  const [location, setLocation] = useState({});
+  const history = useHistory();
+  const [loggedInUser, setLoggedInUser, bookInfo, setbookInfo] = useContext(
+    UserContext
+  );
 
-	const onSubmit = (data) => {
-		setBookingDetails(data);
-		history.push(`/place/search/${data.destination}`);
-	};
+  const onSubmit = (data) => {
+    setbookInfo(data);
+    history.push(`/place/search/${data.destination}`);
+  };
 
-	useEffect(() => {
-		const locationDetails = locations.find((location) => location.id === +locationId);
-		if (locationDetails) {
-			setLocation(locationDetails);
-		} else {
-			alert("No Place Found");
-		}
-	}, [locationId]);
+  useEffect(() => {
+    const locationDetails = locations.find(
+      (location) => location.id === +locationId
+    );
+    if (locationDetails) {
+      setLocation(locationDetails);
+    } else {
+      alert("No Place Found");
+    }
+  }, [locationId]);
 
-	return (
-		<Container>
-			<Row>
-				<Col md={4}>
-					<LocationDetails location={location} handleBooking={false} />
-				</Col>
-				<Col md={6} className="ml-auto">
-					<BookingForm onSubmit={onSubmit} location={location} />
-				</Col>
-			</Row>
-		</Container>
-	);
+  return (
+    <Container>
+      <Row>
+        <Col md={4}>
+          <LocationDetails location={location} handleBooking={false} />
+        </Col>
+        <Col md={6} className="ml-auto">
+          <BookingForm onSubmit={onSubmit} location={location} />
+        </Col>
+      </Row>
+    </Container>
+  );
 };
 
 export default BookLocation;

@@ -1,5 +1,5 @@
 import React, { useContext, useState } from "react";
-import { Button, Container, Image } from "react-bootstrap";
+import { Button, Container} from "react-bootstrap";
 import { useHistory, useLocation } from "react-router-dom";
 import { UserContext } from "../../App";
 import LoginForm from "../LoginForm/LoginForm";
@@ -9,7 +9,6 @@ import {
 	firebaseUpdateUserName,
 	firebaseCustomLogin,
 } from "./firebaseLogin";
-
 
 const Login = () => {
 	const [newUserRegistration, setNewUserRegistration] = useState(false);
@@ -25,7 +24,6 @@ const Login = () => {
 		if (newUserRegistration) {
 			firebaseSignup(email, password).then((response) => {
 				const name = `${firstName} ${lastName}`;
-				// Adds name
 				if (response.success) {
 					firebaseUpdateUserName(name);
 					setNewUserRegistration(false);
@@ -85,8 +83,7 @@ const Login = () => {
 		<div className="login">
 			{loggedInUser && loggedInUser.name ? (
 				<Container>
-					<h1>Welcome {loggedInUser.name}</h1>
-					<p>You are now logged in.</p>
+					<h1>{loggedInUser.name}, You are already logged in</h1>	
 				</Container>
 			) : (
 				<Container>

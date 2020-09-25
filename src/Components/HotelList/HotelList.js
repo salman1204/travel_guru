@@ -5,7 +5,7 @@ import locations from "../../fakeData/locations";
 import Hotel from "../Hotel/Hotel";
 
 
-const BookingSearchResult = () => {
+const HotelList = () => {
 	const { destination } = useParams();
 	const [hotels, setHotels] = useState([]);
 	const history = useHistory();
@@ -30,12 +30,9 @@ const BookingSearchResult = () => {
 						<Hotel key={hotel.id} hotel={hotel} />
 					))}
 				</Col>
-				{/* <Col md={6} className="ml-auto">
-					<Map destination={destination} />
-				</Col> */}
 			</Row>
 		</Container>
 	);
 };
 
-export default BookingSearchResult;
+export default HotelList;

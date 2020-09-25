@@ -1,10 +1,9 @@
 import * as firebase from "firebase/app";
-import "firebase/analytics";
 import "firebase/auth";
-import "firebase/firestore";
 import "./firebase.config";
 
 export const firebaseProviderLogin = (providerName) => {
+	
 	let provider;
 
 	if (providerName === "google") {
@@ -18,7 +17,6 @@ export const firebaseProviderLogin = (providerName) => {
 		.signInWithPopup(provider)
 		.then(function (result) {
 			const { displayName, email } = result.user;
-
 			const signedInUser = {
 				name: displayName,
 				email,

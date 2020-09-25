@@ -33,7 +33,7 @@ const Location = () => {
 
  
   return (
-    <div>
+    <div >
       <Container>
         <Row>
           <Col>

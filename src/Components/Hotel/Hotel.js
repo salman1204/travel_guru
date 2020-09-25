@@ -1,17 +1,9 @@
 import React from "react";
 import { Col, Image, Row } from "react-bootstrap";
-
 const Hotel = ({ hotel }) => {
 	const { name, description, image } = hotel;
 	return (
-		<div
-			style={{
-				border: "1px solid #E0A800",
-				padding: "5px 10px",
-				margin: "10px auto",
-				borderRadius: "10px",
-			}}
-		>
+		<div>
 			<Row>
 				<Col md={6}>
 					<Image src={image} thumbnail className="w-100" />
