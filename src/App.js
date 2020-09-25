@@ -1,17 +1,53 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { createContext, useState } from 'react';
 import './App.css';
+import BookLocation from './Components/BookLocation/BookLocation';
 import Header from './Components/Header/Header';
 import Location from './Components/Location/Location';
+import Login from './Components/Login/Login';
+import PrivateRoute from './Components/PrivateRoute/PrivateRoute';
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import BookingSearchResult from './Components/BookingSearchResult/BookingSearchResult';
 
+
+
+export const UserContext = createContext ();
 
 function App() {
-  return (
-    <div className="App">
-      <Header></Header>
-      <Location></Location>
-    </div>
-  );
+	const [loggedInUser, setLoggedInUser] = useState ({});
+	const [bookingDetails, setBookingDetails] = useState({});
+	return (
+		<div className="App">
+			<UserContext.Provider
+				value={[
+					loggedInUser,
+					setLoggedInUser,
+					bookingDetails,
+					setBookingDetails,
+				]}
+			>
+				<Router>
+					<Header />
+					<Switch>
+						<Route exact path="/">
+							<Location/>
+						</Route>
+						<Route exact path="/login">
+							<Login />
+						</Route>
+						<Route exact path="/location/:locationId">
+							<BookLocation/>
+						</Route>
+            <PrivateRoute exact path="/place/search/:destination">
+							<BookingSearchResult/>
+						</PrivateRoute>
+						{/* <Route path="*">
+							<NotFound/>
+						</Route> */}
+					</Switch>
+				</Router>
+			</UserContext.Provider>
+		</div>
+	);
 }
 
 export default App;

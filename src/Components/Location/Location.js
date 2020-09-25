@@ -42,11 +42,7 @@ const Location = () => {
           <Col>
             <Row>
               {locations.map((location) => (
-                <LocationPhoto
-                  key={location.id}
-                  location={location}
-                  selectedLocation={selectedLocation}
-                />
+                <LocationPhoto key={location.id} location={location} selectedLocation={selectedLocation}/>
               ))}
             </Row>
           </Col>
