@@ -6,16 +6,16 @@ import Location from './Components/Location/Location';
 import Login from './Components/Login/Login';
 import PrivateRoute from './Components/PrivateRoute/PrivateRoute';
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import BookingSearchResult from './Components/BookingSearchResult/BookingSearchResult';
-
-
+import HotelList from './Components/HotelList/HotelList';
 
 export const UserContext = createContext ();
 
 function App() {
-	const [loggedInUser, setLoggedInUser] = useState ({});
+
+  const [loggedInUser, setLoggedInUser] = useState ({});
 	const [bookingDetails, setBookingDetails] = useState({});
-	return (
+  
+  return (
 		<div className="App">
 			<UserContext.Provider
 				value={[
@@ -32,17 +32,14 @@ function App() {
 							<Location/>
 						</Route>
 						<Route exact path="/login">
-							<Login />
+							<Login/>
 						</Route>
 						<Route exact path="/location/:locationId">
 							<BookLocation/>
 						</Route>
             <PrivateRoute exact path="/place/search/:destination">
-							<BookingSearchResult/>
+							<HotelList></HotelList>
 						</PrivateRoute>
-						{/* <Route path="*">
-							<NotFound/>
-						</Route> */}
 					</Switch>
 				</Router>
 			</UserContext.Provider>

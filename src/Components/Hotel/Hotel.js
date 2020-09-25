@@ -6,7 +6,7 @@ const Hotel = ({ hotel }) => {
 	return (
 		<div
 			style={{
-				border: "1px solid #8BC34A",
+				border: "1px solid #E0A800",
 				padding: "5px 10px",
 				margin: "10px auto",
 				borderRadius: "10px",

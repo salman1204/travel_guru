@@ -2,7 +2,6 @@ import * as firebase from "firebase/app";
 import "firebase/analytics";
 import "firebase/auth";
 import "firebase/firestore";
-
 import "./firebase.config";
 
 export const firebaseProviderLogin = (providerName) => {
@@ -100,17 +99,5 @@ export const firebaseCustomLogin = (email, password) => {
 				error: error.message,
 			};
 			return signedInUser;
-		});
-};
-
-export const firebaseLogout = () => {
-	firebase
-		.auth()
-		.signOut()
-		.then(function () {
-			alert("Logged out successfully");
-		})
-		.catch(function (error) {
-			alert(error.message);
 		});
 };
